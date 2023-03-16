@@ -1,0 +1,41 @@
+package mayday;
+
+public class Product {
+	int price;
+	int bonusPoint;
+	
+	
+	public Product() {
+		super();
+		
+	}
+
+
+	public Product(int price) {
+		super();
+		this.price = price;
+		bonusPoint = (int)(price/10.0);		//보너스 점수는 제품가격의 10%
+	}
+
+//연습하려고 만들었음.
+	public int getPrice() {
+		return price;
+	}
+
+
+	public void setPrice(int price) {
+		this.price = price;
+	}
+
+
+	public int getBonusPoint() {
+		return bonusPoint;
+	}
+
+
+	public void setBonusPoint(int bonusPoint) {
+		this.bonusPoint = bonusPoint;
+	}
+	
+	
+}
