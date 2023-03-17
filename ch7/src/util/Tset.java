@@ -6,5 +6,5 @@ public class Tset {
 	private String tel;
 	
 	public void print() {}
-	public void name() {}
+	public int sum() {return 0;}
 }
