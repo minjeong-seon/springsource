@@ -12,7 +12,7 @@ import java.util.Date;
 public class SimpleDateFormatEx1 {
 
 	public static void main(String[] args) {
-
+		//data : 시스템 상 시간과 날짜를 알려준다.
 		Date date = new Date();
 		System.out.println(date);
 
