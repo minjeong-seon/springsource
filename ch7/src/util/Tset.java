@@ -9,5 +9,9 @@ public class Tset {
 	public int sum() {
 		return 0;
 		}
+	@Override
+	public String toString() {
+		return "Tset [name=" + name + ", no=" + no + ", tel=" + tel + "]";
+	}
 
 }
