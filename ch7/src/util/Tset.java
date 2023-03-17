@@ -6,7 +6,6 @@ public class Tset {
 	private String tel;
 	
 	
-	
 	public Tset(String name, int no, String tel) {
 		super();
 		this.name = name;
@@ -14,7 +13,8 @@ public class Tset {
 		this.tel = tel;
 	}
 
-	public void print() {}
+	
+public void print() {}
 	public int sum() {
 		return 0;
 		}
