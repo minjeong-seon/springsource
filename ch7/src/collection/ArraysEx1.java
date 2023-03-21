@@ -1,6 +1,5 @@
 package collection;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.List;
 
@@ -60,7 +59,7 @@ public class ArraysEx1 {
 		//sort(): 정렬
 		int arr8[]= {3,2,0,1,4};
 		Arrays.sort(arr8);
-		System.out.println(Arrays.toString(arr8));
+		System.out.println("sort : "+Arrays.toString(arr8));
 		
 		//binarySerch(): 이진검색 -찾는 요소의 위치 리턴. 없는 값을 검색 시 난데없는 값 리턴됨.
 		//순차검색: 차례대로 검색(정렬 필요 없음)

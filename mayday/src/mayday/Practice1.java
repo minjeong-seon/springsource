@@ -35,12 +35,12 @@ public class Practice1 {
 //			}
 //		}
 
-		// 3) 1~45까지의 숫자 배열 777번 랜덤 셔플로 Lotto 번호 6자리 출력하기 
-		int lotto[]=new int[45];
-		for (int i = 0; i < lotto.length; i++) {
-			lotto[i]+=i+1;
-		}
-		System.out.println(Arrays.toString(lotto));
+//		// 3) 1~45까지의 숫자 배열  Lotto 번호 6자리 출력하기 
+//		int lotto[]=new int[45];
+//		for (int i = 0; i < lotto.length; i++) {
+//			lotto[i]+=i+1;
+//		}
+//		System.out.println(Arrays.toString(lotto));
 //		
 //		for (int i = 0; i < 6; i++) {
 //			int L = (int)(Math.random()*45);
