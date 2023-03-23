@@ -113,6 +113,7 @@ public class StringEx2 {
 		String animals = "dog,cat,bear";
 		//regex; regular expression(정규표현식) : 특정한 규칙을 가진 문자열의 집합
 		String[] zooArr = animals.split(",");
+	
 		System.out.println(zooArr.length); //zooArr[index] = 3개
 		String zoo1 = zooArr[0];  //dog
 		String zoo2 = zooArr[1];  //cat

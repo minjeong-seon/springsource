@@ -44,6 +44,7 @@ public class ArraysEx1 {
 		int[] arr4 = Arrays.copyOf(arr, arr.length);		//<--전부 복사하고 싶을 때
 		System.out.println(Arrays.toString(arr4));
 		
+		
 		int[] arr5 = Arrays.copyOf(arr,3);		//0~2범위까지 복사, newLength는 포함하지 않음
 		System.out.println(Arrays.toString(arr5));
 		
