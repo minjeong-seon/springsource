@@ -28,11 +28,11 @@ public class Insert2 {
 			con=DriverManager.getConnection(url, user, password);
 			
 			System.out.println("부서번호 입력 >> ");
-			int deptno = sc.nextInt();
+			int deptno = Integer.parseInt(sc.nextLine());
 			System.out.println("부서명 입력 >> ");
-			String dname = sc.next();
+			String dname = sc.nextLine();
 			System.out.println("지역명 입력 >> ");
-			String loc = sc.next();
+			String loc = sc.nextLine();
 			
 			String sql = "insert into dept_temp (deptno, dname, loc) values (?, ?, ?)";
 			//sql 구문 eclipse > sql developer 전송하기

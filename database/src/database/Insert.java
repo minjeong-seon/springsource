@@ -10,7 +10,7 @@ import javax.print.DocFlavor.URL;
 public class Insert {
 	public static void main(String[] args) {
 		// insert, update, delete 작업 시에는 con, pstmt 두 개의 객체만 사용
-		// DML 작업 시 성공한 행의 개수만 전달받게 됨
+		// DML 작업 시 성공한 행의 개수만 전달받게 됨(result>0인 이유)
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		
