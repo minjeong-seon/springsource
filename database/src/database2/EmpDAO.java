@@ -1,6 +1,7 @@
 package database2;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -105,6 +106,7 @@ public class EmpDAO {
 		}
 		return empDTO;
 	}
+
 	
 	//급여 수정
 	public boolean update(int sal, int empno) {
@@ -128,6 +130,72 @@ public class EmpDAO {
 	}
 	
 	
+	//사원 정보 삭제
+	public boolean delete(int empno) {
+		boolean status = false;
+		try {
+			con=getConnection();
+			String sql="delete from emp_temp where empno = ?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1, empno);
+			int result = pstmt.executeUpdate();
+			if(result>0) status = true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			close(con, pstmt);
+		}
+		return status;
+	}
 	
+	
+	public boolean insert (EmpDTO dto) {
+		boolean status = false;
+		try {
+			con=getConnection();
+			String sql = "insert into emp_temp(empno, ename, job, mgr, hiredate, sal, comm,deptno) values(?,?,?,?,?,?,?,?)";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1, dto.getEmpno());
+			pstmt.setString(2, dto.getEname());
+			pstmt.setString(3, dto.getJob());
+			pstmt.setInt(4, dto.getMgr());
+			pstmt.setDate(5, dto.getHirdate());
+			pstmt.setInt(6, dto.getSal());
+			pstmt.setInt(7, dto.getComm());
+			pstmt.setInt(8, dto.getDeptno());
+			int result = pstmt.executeUpdate();
+			if(result>0) status = true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			close(con, pstmt);
+		}		
+		return status;
+	}
+	
+	//사원 추가(입사일=시스템 날짜)
+//	public boolean insert(EmpDTO dto) {
+//		boolean status = false;
+//		try {
+//			//오늘 입사한 사원에 대한 정보 입력
+//			con=getConnection();
+//			String sql = "insert into emp_temp(empno, ename, job, mgr, hiredate, sal, comm,deptno) values(?,?,?,?,sysdate,?,?,?)";
+//			pstmt = con.prepareStatement(sql);
+//			pstmt.setInt(1, dto.getEmpno());
+//			pstmt.setString(2, dto.getEname());
+//			pstmt.setString(3, dto.getJob());
+//			pstmt.setInt(4, dto.getMgr());
+//			pstmt.setInt(5, dto.getSal());
+//			pstmt.setInt(6, dto.getComm());
+//			pstmt.setInt(7, dto.getDeptno());
+//			int result = pstmt.executeUpdate();
+//			if(result>0) status = true;		
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}finally {
+//			close(con, pstmt);
+//		}
+//		return status;
+//	}
 	
 }
