@@ -65,7 +65,7 @@ public class ArraysEx1 {
 		//binarySerch(): 이진검색 -찾는 요소의 위치 리턴. 없는 값을 검색 시 난데없는 값 리턴됨.
 		//순차검색: 차례대로 검색(정렬 필요 없음)
 		//이진검색: 검색할 범위를 반복적으로 절반씩 줄이며 검색(*정렬 필수*)
-		System.out.println(Arrays.binarySearch(arr8,4));
+		System.out.println("이진검색: "+Arrays.binarySearch(arr8,4));
 		System.out.println(Arrays.binarySearch(arr8,5));		//없는 값 검색
 		
 		//asList(): 배열을 List로 변환(크기는 변경 안 됨; 요소 추가가 안 된다는 의미)

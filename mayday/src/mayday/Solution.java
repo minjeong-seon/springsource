@@ -135,6 +135,34 @@ import java.util.List;
 //}
 
 
+//정수 배열 array가 매개변수로 주어질 때, 7이 총 몇 개 있는지 return 하도록 solution 함수를 완성해보세요
+//import java.util.Arrays;
+//class Solution {
+//    public int solution(int[] array) {
+//    	int answer = 0;
+//        for(int a : array){
+//            while(a != 0){
+//                if(a % 10 == 7){
+//                    answer++;
+//                }
+//                a /= 10;
+//            }
+            
+//            int svn = 0;
+//            String str = "";
+//
+//            for(int i=0; i<array.length; i++){
+//                str += array[i];
+//            }
+//
+//            for(int i=0; i<str.length(); i++){
+//                if(str.substring(i,i+1).equals("7")) svn++;
+//            }
+//
+//            return svn;
+//        }
+//    }
+//}
 
 
 

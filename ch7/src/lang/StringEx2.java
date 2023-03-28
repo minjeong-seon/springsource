@@ -74,7 +74,7 @@ public class StringEx2 {
 		System.out.println(str4.endsWith("ect"));
 		
 		//contains(charSequence s): charSequence(문자열의 부모), 지정된 문자열에 s가 포함되어 있는지 여부 
-		System.out.println(str2.contains("Hello"));
+		System.out.println("contains : "+str2.contains("Hello"));
 		
 		//replace(old charSequence, new charSequence): 원본 문자열 > 변경 문자열로 대체(String으로 리턴)
 		String str5="자바는 객체지향 언어입니다. 자바는 풍부한 API를 제공합니다.";
