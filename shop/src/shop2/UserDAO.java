@@ -16,7 +16,7 @@ public class UserDAO {
 	
 	/* JdbcUtil 메소드 호출하는 법
 	 * 1) static 메소드이므로 클래스명.메소드명();
-	 * 2) jdbcUtil 클래스 안 메소드가 모두 static이면 import static JdbcUtil.*; 삽입 후 => 메소드명();만 해도 ok
+	 * 2) jdbcUtil 클래스 안 메소드가 모두 static이면 import static shop2.JdbcUtil.*; 삽입 후 => 메소드명();만 해도 ok
 	 */
 	
 	public boolean insert(int user_id, String name, int pay_no) {
@@ -46,7 +46,9 @@ public class UserDAO {
 		List<UserDTO> list = new ArrayList<>();
 		try {
 			con=getConnection();
-			String sql = "select * from suser";
+			//String sql = "select * from suser";
+			String sql = "select u.user_id, u.name, p.pay_no, p.info "
+						+"from suser u join paytype p on u.pay_no = p.pay_no";
 			
 			pstmt=con.prepareStatement(sql);
 			rs=pstmt.executeQuery();
@@ -54,7 +56,7 @@ public class UserDAO {
 //				UserDTO dto = new UserDTO(rs.getInt(1), rs.getString(2), rs.getInt(3));
 //				list.add(dto);
 				
-				list.add(new UserDTO(rs.getInt(1), rs.getString(2), rs.getInt(3)));
+				list.add(new UserDTO(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4)));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

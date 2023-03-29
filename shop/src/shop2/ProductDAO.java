@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,7 +15,7 @@ public class ProductDAO {
 	private Connection con = null;
 	private PreparedStatement pstmt = null;
 	private ResultSet rs = null;
-	
+
 	public List<ProductDTO> getList(){
 		List<ProductDTO> list = new ArrayList();
 		try {
@@ -65,7 +66,7 @@ public class ProductDAO {
 	
 	
 	
-	
+
 	
 	
 	

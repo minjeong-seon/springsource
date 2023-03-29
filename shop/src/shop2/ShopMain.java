@@ -13,13 +13,13 @@ public class ShopMain {
 		Scanner sc = new Scanner(System.in);
 		boolean flag = true;
 		while (flag) {
-			System.out.println("----------------------------------");
+			System.out.println("=========================");
 			System.out.println("1. USER 생성");
 			System.out.println("2. PRODUCT 생성");
 			System.out.println("3. 상점 OPEN");
 			System.out.println("4. 전체 USER 조회");
 			System.out.println("5. 종료");
-			System.out.println("----------------------------------");
+			System.out.println("=========================");
 		
 			System.out.print("menu 선택 : ");
 			int no = Integer.parseInt(sc.nextLine());
@@ -32,6 +32,7 @@ public class ShopMain {
 				shop.genProduct();
 				break;
 			case 3:		//shop 시작
+				System.out.println();
 				shop.start();
 				break;
 			case 4:		//전체 user 조회			

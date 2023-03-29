@@ -1,6 +1,7 @@
 package shop2;
 
 import java.sql.Array;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -12,15 +13,13 @@ public class MyShop2 implements IShop {
 	private String title;
 	//start();에서 선택된 user 정보를 저장할 변수 선언
 	private int selUser;
-		//user 정보 저장 배열
-	//구매한 제품을 저장할 배열(cart)
-		ArrayList<UserDTO> users =new ArrayList<>();
-		ArrayList<Product> products=new ArrayList<>();
-		ArrayList<Product> carts=new ArrayList<>();
-
+	//화폐단위 표시용
+	DecimalFormat df = new DecimalFormat();
+	
 	//UserDAO 객체 생성
 	UserDAO userDAO = new UserDAO();
 	ProductDAO productDAO = new ProductDAO();
+	OrderDAO orderDAO = new OrderDAO();
 	
 	Scanner sc=new Scanner(System.in);
 	
@@ -74,19 +73,19 @@ public class MyShop2 implements IShop {
 		
 	}
 
-//	System.out.println("***** 상품 목록 *****");
-//	System.out.println("상품 ID  |   상품명  |  가격  |  상품상세");
-//	System.out.println("----------------------------------");
-	
 	@Override
 	public void start() {
 		System.out.println(title+" : 메인화면 - 계정 선택");
 		System.out.println("=========================");
 		int i=0;
-		for (UserDTO user : users) {
-			//System.out.printf("[%d] %s(%s)\n",i++,user.getName(),user.getPayType());
+		//현재 user 정보 출력
+		List<UserDTO> list = userDAO.getList();
+		for (UserDTO userDTO : list) {
+			System.out.print(userDTO.getUser_id()+"\t");
+			System.out.print(userDTO.getName()+"\t");
+			//System.out.print(userDTO.getPayNo()+"\t");
+			System.out.print(userDTO.getType()+"\n");
 		}
-
 		System.out.println("[X]종 료");
 		System.out.print("선택 : ");
 		String sel = sc.nextLine();
@@ -99,10 +98,9 @@ public class MyShop2 implements IShop {
 		case "x": case "X":
 			System.exit(0);  //프로그램 종료
 			break;
-		case "0": case "1":
+		case "1000": case "1001":
 			//입력받은 숫자로 selUser변수에 유저 정보 저장
 			selUser=Integer.parseInt(sel);
-			
 			productList();
 			break;
 		default:
@@ -117,23 +115,24 @@ public class MyShop2 implements IShop {
 		System.out.println();
 		System.out.println(title+" : 상품목록 - 상품 선택");
 		System.out.println("=========================");
-	
-		int i=0;
-		for (Product product : products) {
-			System.out.printf("[%d]",i++);
-			product.printDetail();
-			product.printExtra();	
-			System.out.println();
-		}
+		//product DB에 있는 상품 출력
+		 List<ProductDTO> list = productDAO.getList();
+		for (ProductDTO productDTO : list) {
+			System.out.print(productDTO.getProduct_id()+"\t");
+			System.out.print(productDTO.getPname()+" \t");
+			System.out.print(df.format(productDTO.getPrice())+"원"+"\t");
+			System.out.print(productDTO.getContent()+"\n");
+		}System.out.println();
 		System.out.println("[h] 메인 화면");
 		System.out.println("[c] 체크 아웃");
 		System.out.print("선택 : ");
+		
 		String sel = sc.nextLine();
 
-		//상품선택:0~3번(cart에 제품 추가+productList 호출) | 메뉴선택: h(start 호출),c(checkOut 호출)
+		//상품선택 시: (cart에 제품 추가+productList 호출) | 메뉴선택: h(start 호출),c(checkOut 호출)
 		switch (sel) {
-		case "0":case "1":case "2":case "3":
-			carts.add(products.get(Integer.parseInt(sel)));
+		case "101101":case "130114":case "330301":case "330345":
+			orderDAO.insert(selUser, Integer.parseInt(sel));
 			productList();
 			break;
 		case "h":case "H":
@@ -155,19 +154,30 @@ public class MyShop2 implements IShop {
 		//결제방법: card/cash
 		//결제금액: 얼마얼마
 		//[p] 이전, [q] 결제완료
-		System.out.println();
 		System.out.println("=========================");
+		System.out.println(title + " : 체크아웃");
 		int total = 0;
-		int i=0;
-		for (Product cart : carts) {
-			if (carts!=null) {
-				System.out.printf("[%d]%s(%d)\n",i++,cart.getName(),cart.getPrice());
-				total+=cart.getPrice();
+		
+		List<OrderDTO> list = orderDAO.carts(selUser);
+
+		System.out.println("ID | NAME | PAYTYPE | P.No | P.NAME | PRICE | CONTENT | ORDER_DATE");
+		for (OrderDTO orderDTO : list) {
+			//getUserDTO() 안에 저장된 정보 호출
+			System.out.print(orderDTO.getUserDTO().getUser_id()+"\t");
+			System.out.print(orderDTO.getUserDTO().getName()+"\t");
+			System.out.print(orderDTO.getUserDTO().getType()+"\t");
+			//getProductDTO() 안에 저장된 정보 호출
+			System.out.print(orderDTO.getProductDTO().getProduct_id()+"\t");
+			System.out.print(orderDTO.getProductDTO().getPname()+"\t");
+			System.out.print(df.format(orderDTO.getProductDTO().getPrice())+"원"+"\t");
+			System.out.print(orderDTO.getProductDTO().getContent()+"\t");
+			System.out.print(orderDTO.getOrderDate()+"\n");
+			
+			//가격합산
+			total += orderDTO.getProductDTO().getPrice();
 		}
-	
-		}System.out.println("=========================");
-		//System.out.println("결제 방법: "+users.get(selUser).getPayType());
-		System.out.println("합계: "+total+"만원");
+		System.out.println("=========================");
+		System.out.println("결제 금액: "+df.format(total)+"원");
 		System.out.println("[p]이전 , [q]결제완료");
 		System.out.print("선택 : ");
 		String sel=sc.nextLine();
@@ -175,6 +185,14 @@ public class MyShop2 implements IShop {
 		//p일 때 productList() 호출
 		//q일 때 "결제가 완료되었습니다." + 프로그램 종료
 		//잘못 입력 시 다시 checkOut() 호출
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		switch (sel) {
 		case "p":case "P":
