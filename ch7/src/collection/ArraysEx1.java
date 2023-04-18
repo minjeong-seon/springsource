@@ -37,8 +37,8 @@ public class ArraysEx1 {
 		//arr 배열을 arr3에 복사
 		int arr3[]=new int[5];
 		for (int i = 0; i < arr.length; i++) {
-			arr3[i]=arr[i];
-		}System.out.println(Arrays.toString(arr3));
+			arr3[i]=arr[i]*2;
+		}System.out.println("배열 두배: "+Arrays.toString(arr3));
 		
 		//copyOf(int[] original, int newLength): (원본배열, 복사할 요소의 개수)
 		int[] arr4 = Arrays.copyOf(arr, arr.length);		//<--전부 복사하고 싶을 때
