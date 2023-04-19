@@ -8,10 +8,12 @@
 </head>
 <body>
 <%
-	int num1=Integer.parseInt(request.getParameter("num1"));
-	int num2=Integer.parseInt(request.getParameter("num2"));
+	//form 요소 가져오기
+	int num1 = Integer.parseInt(request.getParameter("num1"));
+	int num2 = Integer.parseInt(request.getParameter("num2"));
 	String op = request.getParameter("op");
 	
+	// +, -, *, /
 	int result = 0;
 	switch(op){
 	case "+":
@@ -29,8 +31,13 @@
 	}
 	
 %>
-	
-	
-	<%=num1%><%=op%><%=num2%>=<%=result%>
+
+<%=num1%> <%=op%> <%=num2%> = <%=result%>
 </body>
 </html>
+
+
+
+
+
+
