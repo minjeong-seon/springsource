@@ -14,7 +14,7 @@
 	// 2. 커넥션 생성
 	String url = "jdbc:oracle:thin:@localhost:1521:xe";
 	String user = "javadb";
-	String password = "12345";
+	String password = "12345";	
 	Connection con = DriverManager.getConnection(url, user, password);
 
 	// 3. SQL 쿼리문 실행 : select(조회)
@@ -39,6 +39,7 @@
 		%>
 		<tr>
 			<th scope="row"><%=rs.getInt("no") %></th>
+			<!-- 링크에 데이터를 딸려서 보내고 싶을 때는 링크 뒤에 '? '랑 같이 데이터 정보 붙이면 됨 -->
 			<td><a href="get.jsp?no=<%=rs.getInt("no") %>"><%=rs.getString("username") %></a></td>
 			<td><%=rs.getInt("birthYear") %></td>
 			<td><%=rs.getString("addr") %></td>
