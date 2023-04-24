@@ -13,17 +13,24 @@
 		
 		1) 사용할 값을 담고 : setAttribute("key", "value")
 		2) 필요한 곳에서 꺼내 쓰기 : getAttribute("key")
-		
+	
 	--%>
 	<%
-		LoginDTO loginDTO = (LoginDTO)session.getAttribute("loginDTO");
+		//LoginDTO loginDTO = (LoginDTO)session.getAttribute("loginDTO");
+	
+		// EL(Expression Language) : jsp에서 데이터 추출하는 표현식 
+		//		setAttribute 에 담은 값 쉽게 찾아다 쓰기
+		//		${이름.변수명} : 객체로 담았을 때
+		//		${이름} : 개별로 담았을 때
 	%>
 	<h3>로그인 정보</h3>
 	<ul>
 		<%-- <li>아이디 : <%=session.getAttribute("id")%></li>
 		<li>비밀번호 : <%=session.getAttribute("pwd")%></li> --%>
-		<li>아이디 : <%=loginDTO.getId() %></li>
-		<li>비밀번호 : <%=loginDTO.getPwd()%></li>
+	<%-- 	<li>아이디 : <%=loginDTO.getId() %></li>
+		<li>비밀번호 : <%=loginDTO.getPwd()%></li> --%>
+		<li>아이디 : ${loginDTO.id}</li>
+		<li>비밀번호 :${loginDTO.pwd}</li>
 	</ul>
 	
 	

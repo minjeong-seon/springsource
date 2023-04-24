@@ -18,7 +18,7 @@
 	//페이지 이동(사용자가 볼 수 있는 페이지로~)
 	String path="";
 	if(flag){ //회원추가 성공 시 회원목록으로 페이지 이동
-		path="list.jsp";
+		path="listPro.jsp";
 	}else{ //회원추가 실패 시 회원추가 페이지로 이동
 		path="insert.jsp";
 	}

@@ -12,5 +12,8 @@
 
 <h4>아이디 : <%=request.getAttribute("id") %></h4>
 <h4>비밀번호 : <%=request.getAttribute("pwd") %></h4>
+<h2>EL 사용 시</h2>
+<h4>아이디 : ${id}</h4>
+<h4>비밀번호 : ${pwd}</h4>
 </body>
 </html>
