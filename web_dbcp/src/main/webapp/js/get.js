@@ -11,13 +11,15 @@
 //const no = document.querySelector("#no").value;
 
 document.querySelector(".btn-primary").addEventListener("click",()=>{
-	location.href = "listPro.jsp";
+	location.href="listPro.jsp";
+})
+ 
+ 
+ document.querySelector(".btn-success").addEventListener("click",()=>{
+	location.href="modifyPro.jsp?no="+no;
 })
 
-document.querySelector(".btn-success").addEventListener("click",()=>{
-	location.href = "modifyPro.jsp?no="+no;
-})
 
 document.querySelector(".btn-danger").addEventListener("click",()=>{
-	location.href = "removePro.jsp?no="+no;
+	location.href="removePro.jsp?no="+no;
 })

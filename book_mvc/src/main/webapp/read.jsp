@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ include file="/include/header.jsp"%>
 <h1>도서 상세 조회</h1>
 <form action="" method="post">
@@ -28,6 +29,10 @@
 </form>
 <script>
 	const code = ${dto.code};
+	const listPath = '<c:url value="/list.do"/>'; 
+	const modifyPath = '<c:url value="/modify.do"/>'; 
+	const removePath = '<c:url value="/remove.do"/>'; 
 </script>
-<script src="/js/read.js"></script>
+
+<script src='<c:url value="/js/read.js"/>'></script>
 <%@ include file="/include/footer.jsp"%>
