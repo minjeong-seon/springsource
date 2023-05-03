@@ -1,0 +1,2 @@
+select * from BOARD;
+insert into board(bno,name,password,title,content,re_ref,re_lev,re_seq) values(board_seq.nextval,'김나리',1111,'왜안되는데','db데이터 왜 못 읽냐고',board_seq.currval,0,0);

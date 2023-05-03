@@ -1,3 +1,5 @@
+<%@page import="java.net.URLEncoder"%>
+<%@page import="java.util.UUID"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="org.apache.commons.fileupload.FileItem"%>
 <%@page import="java.util.List"%>
@@ -30,6 +32,7 @@ if(isMultipart){
 	        value = item.getString("utf-8");
 	        out.print("<h3>일반 데이터</h3>");
 	        out.print(name+" : "+value+"<br>");
+
 	    } else {	//파일 요소
 	    	name = item.getFieldName();
 	    	value = item.getName();
@@ -41,8 +44,19 @@ if(isMultipart){
 	        //파일 저장
 	        if(!name.isEmpty()){
 	        	String path = "c:\\upload";	//경로 지정
-	        	File f = new File(path+"\\"+value);	//파일 객체 생성==> c:\\upload\\test.html
-	        	item.write(f);	//파일 저장
+	        	
+	        	//고유값 생성
+	        	UUID uuid = UUID.randomUUID();
+	        	
+	        	File f = new File(path+"\\"+ uuid.toString()+"_"+value);	//파일 객체 생성==> c:\\upload\\test.html
+	        	item.write(f);	//파일 저장(파일명==고유값_원본파일명.확장자)
+	        	
+	        	//다운로드를 위한 링크 생성
+	        	String encodeName = URLEncoder.encode(f.getName(), "utf-8");
+	        	
+	        	out.print("<p>");
+	        	out.print("<a href='download.jsp?fileName=" + encodeName +" ' >" + value + "</a>");
+	        	out.print("</p>");
 	        }
 	    }
 	}
