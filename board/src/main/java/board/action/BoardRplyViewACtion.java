@@ -1,12 +1,11 @@
 package board.action;
 
-import javax.servlet.http.HttpServletRequest;
 
+import javax.servlet.http.HttpServletRequest;
 import board.domain.BoardDTO;
 import board.service.BoardReadService;
 
-public class BoardModifyAction implements Action {
-
+public class BoardRplyViewACtion implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request) throws Exception {
 		// get 
@@ -18,6 +17,7 @@ public class BoardModifyAction implements Action {
 		request.setAttribute("dto", dto);
 		
 		// readForm.jsp
-		return new ActionForward(false, "modifyform.jsp");
+		return new ActionForward(false, "replyform.jsp");
 	}
+
 }

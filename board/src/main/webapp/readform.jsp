@@ -47,6 +47,7 @@
 			</div>
 		</div>
 		<button type="submit" class="btn btn-success">수정</button>
+		<button type="button" class="btn btn-secondary">답변</button>
 		<button type="button" class="btn btn-primary">목록보기</button>
 	</form>
 </main>

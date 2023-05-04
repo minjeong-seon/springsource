@@ -18,7 +18,7 @@ document.querySelector(".btn-danger").addEventListener("click", (e)=>{
 	}else{	
 		//비밀번호가 일치하면 입력된 비번을 hidden 폼 안에 있는 비번.value 값으로 setting
 		document.querySelector("#password").value=password.value;
-		//id=readform을 가져와서
+		//id=modifyform을 가져와서
 		const modifyform = 	document.getElementById("modifyform"); 
 		//readform > modify.do로 전송
 		modifyform.action = "delete.do";

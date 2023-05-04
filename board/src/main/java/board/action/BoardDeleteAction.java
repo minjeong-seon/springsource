@@ -1,12 +1,9 @@
 package board.action;
 
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
-
-import board.domain.BoardDTO;
 import board.service.BoardDeleteService;
-import board.util.BoardUploadUtils;
+
 
 public class BoardDeleteAction implements Action {
 		@Override
