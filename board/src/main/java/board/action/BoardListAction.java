@@ -7,37 +7,46 @@ import javax.servlet.http.HttpServletRequest;
 import board.domain.BoardDTO;
 import board.domain.PageDTO;
 import board.service.BoardListService;
+import board.service.BoardTotalService;
 
 public class BoardListAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request) throws Exception {
-		//criteria, keyword 값 가져오기(전체 리스트를 요청하는 경우엔 값 없음)
-		//http://localhost:8080/board/list.do?criteria=&keyword=
+				
+		//criteria, keyword 값 가져오기(전체 리스트를 요청하는 경우 값은 없음)
+		//http://localhost:8080/board/list.do?criteria=&keyword=		
 		
-		//criteria, keyword 값 가져오기(검색 리스트를 요청하는 경우엔 값 있음)
+		//criteria, keyword 값 가져오기(검색 리스트를 요청하는 경우 값은 있음)
 		//http://localhost:8080/board/list.do?criteria=title&keyword=게시글
 		
-		//검색기준과 검색어 가져오기
+		// 검색기준과 검색어 가져오기
 		String criteria = request.getParameter("criteria");
 		String keyword = request.getParameter("keyword");
 		
-		//페이지 나누기 정보 가져오기
-		int page = Integer.parseInt(request.getParameter("page"));
-		//page가 0이면 값이 안 나오니까 최소 1부터 시작하도록 설정
-		if(page==0) {
-			page=1;
+		//페이지 나누기 정보 가져오기		
+		int page = 1;		
+		if(request.getParameter("page") != null) {
+			page = Integer.parseInt(request.getParameter("page"));
 		}
-		int amount = Integer.parseInt(request.getParameter("amount"));
-		//amount가 0이면 값이 안 나오니까 최소 30부터 시작하도록 설정
-		if(amount==0) {
-			amount=30;
-		}
-		PageDTO pageDto = new PageDTO(criteria, keyword, page, amount);
 		
+		int amount = 30;
+		if(request.getParameter("amount") != null) {
+			amount = Integer.parseInt(request.getParameter("amount"));
+		}	
+		
+		PageDTO pageDto = new PageDTO(criteria, keyword,page,amount);
+		
+		// 전체게시물 가져오기
+		BoardTotalService totSer = new BoardTotalService();
+		int total = totSer.getTotalRow(pageDto);
+				
 		// service
 		BoardListService service = new BoardListService();
 		List<BoardDTO> list = service.getList(pageDto);
+		
+		// 페이지 나누기 정보와 검색정보 담기
+		pageDto = new PageDTO(criteria, keyword,page,amount,total);
 		
 		request.setAttribute("list", list);
 		request.setAttribute("pageDto", pageDto);
@@ -45,5 +54,19 @@ public class BoardListAction implements Action {
 		// ActionForward : listForm.jsp
 		return new ActionForward(false, "listform.jsp");
 	}
-
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

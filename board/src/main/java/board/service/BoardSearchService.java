@@ -7,6 +7,6 @@ import board.persistence.BoardDAO;
 
 public class BoardSearchService {
 	public List<BoardDTO> searchBoard(String criteria, String keyword){
-		return new BoardDAO().search(criteria, keyword);
+		return new BoardDAO().searchRows(criteria, keyword);
 	}
 }

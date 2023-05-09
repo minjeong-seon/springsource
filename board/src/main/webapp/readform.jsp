@@ -4,7 +4,7 @@
 <%@ include file="include/header.jsp"%>
 <main>
 	<h2>Board Read</h2>
-	<form action='' method="post">
+	<form action="" method="post">
 		<div class="row mb-3">
 			<label for="inputName" class="col-sm-2 col-form-label">작성자</label>
 			<div class="col-sm-10">
@@ -51,8 +51,12 @@
 		<button type="button" class="btn btn-primary">목록보기</button>
 	</form>
 </main>
-<form action="" id="readform">
+<form action="" id="readForm">
 	<input type="hidden" name="bno" value="${dto.bno}" />
+	<input type="hidden" name="criteria" value="${pageDto.criteria}" />
+	<input type="hidden" name="keyword" value="${pageDto.keyword}" />
+	<input type="hidden" name="page" value="${pageDto.page}" />
+	<input type="hidden" name="amount" value="${pageDto.amount}" />
 </form>
 <script src='<c:url value="/js/read.js"/>'></script>
 <%@ include file="include/footer.jsp"%>

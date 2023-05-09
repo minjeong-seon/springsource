@@ -38,10 +38,23 @@
 		<input type="hidden" name="re_ref" value="${dto.reRef}"/>
 		<input type="hidden" name="re_lev" value="${dto.reLev}"/>
 		<input type="hidden" name="re_seq" value="${dto.reSeq}"/>
+		
+		<%-- 댓글 작성 시 페이지 나누기 정보 --%>
+		<input type="hidden" name="criteria" value="${pageDto.criteria}" />
+		<input type="hidden" name="keyword" value="${pageDto.keyword}" />
+		<input type="hidden" name="page" value="${pageDto.page}" />
+		<input type="hidden" name="amount" value="${pageDto.amount}" />
+	
 		<button type="submit" class="btn btn-success ">답변등록</button>
 		<button type="reset" class="btn btn-danger">다시작성</button>
 		<button type="button" class="btn btn-primary">목록보기</button>
 	</form>
 </main>
+<form action="" id="replyform">
+	<input type="hidden" name="criteria" value="${pageDto.criteria}" />
+	<input type="hidden" name="keyword" value="${pageDto.keyword}" />
+	<input type="hidden" name="page" value="${pageDto.page}" />
+	<input type="hidden" name="amount" value="${pageDto.amount}" />
+</form>
 <script src="js/write.js"></script>
 <%@ include file="include/footer.jsp"%>

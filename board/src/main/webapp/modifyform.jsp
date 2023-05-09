@@ -62,14 +62,20 @@
 			</div>
 		</div>		
 		<input type="hidden" name="bno" value="${dto.bno}" />		
+		<input type="hidden" name="criteria" value="${pageDto.criteria}" />
+		<input type="hidden" name="keyword" value="${pageDto.keyword}" />
 		<button type="submit" class="btn btn-primary">수정</button>		
 		<button type="button" class="btn btn-danger">삭제</button>		
 		<button type="button" class="btn btn-success">목록보기</button>
 	</form>
 </main>
-<form action="" id="modifyForm">
+<form action="" id="modifyform">
 	<input type="hidden" name="bno" value="${dto.bno}" />
 	<input type="hidden" name="password" value="" id="password"/>
+	<input type="hidden" name="criteria" value="${pageDto.criteria}" />
+	<input type="hidden" name="keyword" value="${pageDto.keyword}" />
+	<input type="hidden" name="page" value="${pageDto.page}" />
+	<input type="hidden" name="amount" value="${pageDto.amount}" />
 </form>
 
 
