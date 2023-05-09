@@ -1,9 +1,0 @@
-/**
- * 
- */
-/**
- * @author tjsal
- *
- */
-module mayday {
-}
