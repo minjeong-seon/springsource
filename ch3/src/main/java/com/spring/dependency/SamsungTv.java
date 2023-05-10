@@ -1,12 +1,16 @@
 package com.spring.dependency;
 
+import javax.inject.Inject;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component("tv")
 public class SamsungTv implements TV {
-	@Autowired		//주입(스프링 컨테이너가 관리하는 빈 중에서 하나가 주입됨)
+	// @Inject == @Autowired : 주입(스프링 컨테이너가 관리하는 빈 중에서 하나가 주입됨) -제공하는 패키지만 다름(역할은 똑같)
+	@Inject
+	//@Autowired		
 	@Qualifier("apple")
 	private Speaker speaker;		//has a (포함)관계
 	
