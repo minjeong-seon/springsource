@@ -1,0 +1,10 @@
+2023-05-12 11:32:23,407 ERROR [main] c.s.l.LogTest [LogTest.java:11] -- error 레벨
+2023-05-12 11:32:23,423 WARN [main] c.s.l.LogTest [LogTest.java:12] -- warn 레벨
+2023-05-12 11:32:23,425 INFO [main] c.s.l.LogTest [LogTest.java:13] -- info 레벨
+2023-05-12 11:32:23,427 DEBUG [main] c.s.l.LogTest [LogTest.java:14] -- debug 레벨
+2023-05-12 11:32:23,429 TRACE [main] c.s.l.LogTest [LogTest.java:15] -- trace 레벨
+2023-05-12 11:37:12,528 ERROR [main] c.s.l.LogTest [LogTest.java:20] -- error 레벨
+2023-05-12 11:37:12,542 WARN [main] c.s.l.LogTest [LogTest.java:21] -- warn 레벨
+2023-05-12 11:37:12,544 INFO [main] c.s.l.LogTest [LogTest.java:22] -- info 레벨
+2023-05-12 11:37:12,545 DEBUG [main] c.s.l.LogTest [LogTest.java:23] -- debug 레벨
+2023-05-12 11:37:12,547 TRACE [main] c.s.l.LogTest [LogTest.java:24] -- trace 레벨
