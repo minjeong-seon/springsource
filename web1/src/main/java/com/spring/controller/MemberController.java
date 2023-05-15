@@ -3,11 +3,15 @@ package com.spring.controller;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import com.spring.domain.LoginDTO;
+import com.spring.domain.RegisterDTO;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -20,7 +24,7 @@ public class MemberController {
 	//@RequestMapping("/login") //http://localhost:8080/member/login
 	
 	// 사용자 입력값 가져오기
-	// 1) HttpServletRequest 사용하기
+	// 1) HttpServletRequest 사용하기(=request.getParameter)
 	// 2) 변수 사용 : 1) 변수명은 폼 태그 name 과 일치 2) 폼 태그 name 과 일치하지 않을 때 @RequestParam 사용
 	// 3) 바인딩 객체 사용
 	
@@ -43,14 +47,25 @@ public class MemberController {
 //		System.out.println("password "+req.getParameter("password"));
 //	}	
 	
-	
-	@PostMapping("/login") 
-	public void loginPost(@RequestParam("userid") String id,String password) {
-		log.info("login post...");		
+	@PostMapping("/login")
+	public String loginPost(LoginDTO dto) {
+		log.info("login post...");
 		//사용자 입력값 id, password
-		System.out.println("id "+id);
-		System.out.println("password "+password);
+		System.out.println("id "+dto.getId());
+		System.out.println("password "+dto.getPassword());
+		
+		//main.jsp 보여주기
+		return "/member/main";
 	}	
+	
+	
+//	@PostMapping("/login") 
+//	public void loginPost(@RequestParam("userid") String id,String password) {
+//		log.info("login post...");		
+//		//사용자 입력값 id, password
+//		System.out.println("id "+id);
+//		System.out.println("password "+password);
+//	}	
 	
 	
 	//@RequestMapping("/register") //http://localhost:8080/member/register
@@ -58,6 +73,20 @@ public class MemberController {
 	public void registerGet() {
 		log.info("register...");
 		//return "/member/register";  // 리턴이 있다면   /WEB-INF/views/register.jsp
+	}
+	
+	// /member/register +POST 처리
+	// DTO 작성
+	@PostMapping("/register")
+	public String registerPost(RegisterDTO dto) {
+		log.info("회원가입 요청");		
+		// 사용자 입력값 잘 들어왔는지 확인
+		log.info(dto.toString());
+		
+		// redirect: 가 붙게 되면 DispacherServlet이 동작함
+		// == response.senRedirect 랑 같음
+		//http://localhost:8080/member/login + GET 요청
+		return "redirect:/member/login";
 	}
 	
 }
