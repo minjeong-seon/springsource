@@ -57,7 +57,7 @@
 	  <button type="button" class="btn btn-success">취소</button>
 	</form>
 <script>
-	const path = '<c:url value="/list.do"/>';
+	const path = '<c:url value="/member/list"/>';
 </script>
 <script src='<c:url value="/resources/js/register.js" />'></script>
 <%@ include file="../include/footer.jsp" %>
