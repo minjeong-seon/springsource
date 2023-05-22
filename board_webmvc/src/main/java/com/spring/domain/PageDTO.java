@@ -22,7 +22,7 @@ public class PageDTO {
 		this.cri = cri;	
 		
 		// ex) 사용자가 5page 요청 시, 하단 페이지 번호: 1... 5...10 (한번에 보여지는 페이지 번호는 10개씩으로 설정)
-		this.endPage = (int)(Math.ceil(cri.getPageNum() / 10.0)) * 10;
+		this.endPage = (int)(Math.ceil(cri.getPage() / 10.0)) * 10;
 		this.startPage = this.endPage - 9;
 		
 		// 끝나는 페이지 재계산 : realEnd

@@ -14,15 +14,61 @@
 			select bno, title, writer, regdate, updatedate
 			from (select /*+INDEX_DESC(spring_board pk_spring_board)*/ rownum rn, bno, title, writer, regdate, updatedate
 	        		from spring_board
-	       			where rownum <= (#{pageNum}*#{amount}))
-			where rn> (#{pageNum}-1)*#{amount}
+	       			where 
+	     ]]>  	
+	     <include refid="criteria"></include>
+	     <![CDATA[			
+	       			rownum <= (#{page}*#{amount}))
+			where rn> (#{page}-1)*#{amount}
 		]]>
+		
+		<!-- (페이지 번호: 1, 페이지 당 게시글 수: 10)
+			  (검색기준: T, 검색어: '끝')일 때 쿼리문
+			  
+		select bno, title, writer, regdate, updatedate 
+		from (select 
+							/*+INDEX_DESC(spring_board pk_spring_board)*/ 
+				rownum rn, bno, title, writer, regdate, updatedate 
+				from spring_board 
+				where ( title like '%끝%' ) AND rownum <= (1*10))
+		where rn> (1-1)*10
+		
+		 -->
 	</select>
 	
 	<!-- 전체 게시물 개수 : totalCnt -->
 	<select id="totalCnt" resultType="java.lang.Integer">
 		select count(*) from spring_board
+		where
+			<include refid="criteria"></include>
+		bno>0
 	</select>
+	
+	<!-- 동적 쿼리(mybatis  문법임)
+		collection = "typeArr" : Criteria 객체의  getTypeArr() 메소드 실행
+		item = "type" : 배열 요소에 접근하기 위한 변수 
+		prefixOverrides="OR" : prefix 이후에 OR로 시작하면 무시함
+		 -->
+	<sql id="criteria">
+		<trim prefix="(" suffix=") AND" prefixOverrides="OR">
+			<foreach collection="typeArr" item="type">
+				<trim prefix="OR">
+					<choose>
+						<when test="type == 'T'.toString()">
+							title like '%'||#{keyword}||'%'
+						</when>
+						<when test="type == 'C'.toString()">
+							content like '%'||#{keyword}||'%'
+						</when>
+						<when test="type == 'W'.toString()">
+							writer like '%'||#{keyword}||'%'
+						</when>
+					</choose>
+				</trim>
+			</foreach>
+		</trim>
+	</sql>
+	
 	
 	<!-- 게시글 등록 -->
 	<insert id="register">
@@ -48,6 +94,7 @@
 	<delete id="remove">
 		delete from spring_board where bno=#{bno}
 	</delete>
+	
 	
 </mapper>
 

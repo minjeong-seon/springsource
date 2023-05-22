@@ -7,18 +7,27 @@
 </div>
 <div class="row">
 	<div class="col">
-		<form action="" method="post">
+		<form action="" method="post" id="registerForm" novalidate>
 			<div class="form-group">
 				<label for="title">Title</label> 
 				<input type="text" class="form-control" id="title" placeholder="title" name="title" required>
+				<div class="invalid-feedback">
+					제목을 확인해 주세요.
+				</div>
 			</div>
 			<div class="form-group">
 				<label for="content">Content</label>
 				<textarea class="form-control" id="content" rows="10" name="content" placeholder="content" required></textarea>
+				<div class="invalid-feedback">
+					내용을 확인해 주세요.
+				</div>
 			</div>
 			<div class="form-group">
 				<label for="writer">Writer</label> 
 				<input type="text" class="form-control" id="writer" name="writer" placeholder="writer" required>
+				<div class="invalid-feedback">
+					작성자를 확인해 주세요.
+				</div>
 			</div>
 			<button type="submit" class="btn btn-primary">등록</button>
 			<button type="button" class="btn btn-danger">취소</button>
