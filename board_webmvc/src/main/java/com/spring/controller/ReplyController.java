@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.spring.domain.Criteria;
 import com.spring.domain.ReplyDTO;
+import com.spring.domain.ReplyPageDTO;
 import com.spring.service.ReplyService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -50,11 +51,11 @@ public class ReplyController {
 	
 	// http://localhost:8080/replies/pages/{bno}/ + GET = @PathVariable(링크에 있는 데이터를 변수에 받음) 필요
 	@GetMapping("/pages/{bno}/{page}")
-	public ResponseEntity<List<ReplyDTO>> list(@PathVariable("bno") int bno, @PathVariable("page") int page){
+	public ResponseEntity<ReplyPageDTO> list(@PathVariable("bno") int bno, @PathVariable("page") int page){
 		log.info("댓글 전체 가져오기"+bno);
 		
 		Criteria cri = new Criteria(page, 10);
-		return new ResponseEntity<List<ReplyDTO>>(reService.getList(cri, bno), HttpStatus.OK);
+		return new ResponseEntity<ReplyPageDTO>(reService.getList(cri, bno), HttpStatus.OK);
 	}
 	
 	
@@ -78,6 +79,7 @@ public class ReplyController {
 				new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 	
+
 	
 	
 	

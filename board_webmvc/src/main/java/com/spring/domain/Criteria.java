@@ -7,7 +7,9 @@ import lombok.ToString;
 @Getter @Setter @ToString
 public class Criteria {
 	private int page;	//페이지 번호
-	private int amount;	//한 페이지 당 게시글 몇 개 보여줄 것인지
+	//한 페이지 당 게시글 몇 개 보여줄 것인지
+	//게시글 당 댓글 수
+	private int amount;	
 	
 	private String type;	// 검색조건
 	private String keyword;	//검색어

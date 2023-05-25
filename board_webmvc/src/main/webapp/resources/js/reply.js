@@ -10,6 +10,7 @@ let replyService = (function () {
 
     fetch("/replies/new", {
       method: "post",
+      //사용자 입력 값이 있으면 컨텐트 타입을 받아야 함
       headers: {
         "content-type": "application/json",
       },
@@ -44,9 +45,12 @@ let replyService = (function () {
         return response.json();
       })
       .then((data) => {
+        console.log("리스트와 총 댓글 수");
+        console.log(data);
+
         //data가 도착해서 함수가 호출되면 넘겨받은 함수 호출
         if (callback) {
-          callback(data);
+          callback(data.replyCnt, data.list); // <--key value는 console에 있는 것과 동일함게 해야 함
         }
       })
       .catch((error) => console.log(error));
@@ -108,10 +112,50 @@ let replyService = (function () {
       .catch((error) => console.log(error));
   }
 
+  function udpate(reply, callback) {
+    fetch("/replies/" + reply.rno, {
+      method: "put",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(reply),
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("수정 실패");
+        }
+        return response.text(); //controller에서 받는 데이터 형태에 따라서 결정
+      })
+      .then((data) => {
+        if (callback) {
+          callback(data);
+        }
+      })
+      .catch((error) => console.log(error));
+  }
+
+  function remove(rno, callback) {
+    fetch("/replies/" + rno, {
+      method: "delete",
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("삭제 실패");
+        }
+        return response.text();
+      })
+      .then((data) => {
+        if (callback) {
+          callback(data);
+        }
+      })
+      .catch((error) => console.log(error));
+  }
+
   return {
     add: add,
     getList: getList,
     displayTime: displayTime,
     get: get,
+    update: udpate,
+    remove: remove,
   };
 })();

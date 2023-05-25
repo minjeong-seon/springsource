@@ -65,7 +65,7 @@
 		<c:forEach var="dto" items='${list}'>
 			<tr>
 				<th scope="row">${dto.bno}</th>
-				<td><a href='<c:url value="${dto.bno}"/>' class="move">${dto.title}</a></td>
+				<td><a href='<c:url value="${dto.bno}"/>' class="move">${dto.title}</a> [${dto.replycnt}]</td>
 				<td>${dto.writer}</td>
 				<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${dto.regdate}" /></td>
 				<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${dto.updatedate}" /></td>
