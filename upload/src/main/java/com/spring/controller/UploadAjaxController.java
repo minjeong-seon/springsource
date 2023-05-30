@@ -4,6 +4,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.nio.file.Files;
 import java.text.SimpleDateFormat;
@@ -24,6 +25,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.spring.domain.AttachFileDTO;
@@ -114,7 +116,7 @@ public class UploadAjaxController {
 					//썸네일 파일명은 원본파일명과 다르게 저장해야 하므로 "s_"를 붙임 
 					File thumbnail = new File(uploadFullPath, "s_"+fileName);
 					
-					double ratio = 50;	//축소 비율
+					double ratio = 5;	//축소 비율
 					int width = (int)(origin.getWidth() / ratio);
 					int height = (int)(origin.getHeight() / ratio);
 					
@@ -152,12 +154,20 @@ public class UploadAjaxController {
 		return result;
 	}
 	
+	//다운로드
+	//HttpServletRequest 객체 : 클라이언트 정보를 가져올 수 있음
 	@GetMapping(value="/download", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
-	public ResponseEntity<Resource> downloadFile(String fileName, String userAgent){
+	public ResponseEntity<Resource> downloadFile(String fileName, @RequestHeader("User-Agent") String userAgent){
 		log.info("파일 다운로드 요청 "+fileName);
 		
+		//c:\\20232023\\05\\30\5Cc013c2a7-1201-4667-aaec-22daea28a51d_dd.txt
 		Resource resource = new FileSystemResource("c:\\upload\\"+fileName);
 		
+		//uuid 포함 파일명
+		String oriFileName = resource.getFilename();
+		//위 파일명을 '_'에서 잘라내기(==파일명에서 uuid 제거)
+		String splitUuid = resource.getFilename().substring(oriFileName.indexOf("_")+1);
+				
 		if(!resource.exists()) {
 			return new ResponseEntity<Resource>(HttpStatus.NOT_FOUND);
 		}
@@ -166,18 +176,56 @@ public class UploadAjaxController {
 		
 		String downloadName = null;
 			try {
+				//ms계열 : Trident (IE 11), Edge 로 들어오는 userAgent 정보는 파일 다운로드 시 파일명 "\\"은 공백으로 표시
 				if(userAgent.contains("Trident") || userAgent.contains("Edge")) {
-					downloadName = URLEncoder.encode(resource.getFilename(), "utf-8").replaceAll("\\+", " ");
+					//uuid 포함한 파일명 처리할 때
+					//downloadName = URLEncoder.encode(resource.getFilename(), "utf-8").replaceAll("\\+", " ");
+					
+					//원본 파일명 처리할 때
+					downloadName = URLEncoder.encode(splitUuid, "utf-8").replaceAll("\\+", " ");
 					}else {
-						downloadName = new String(resource.getFilename().getBytes("utf-8"), "ISO-8859-1");
+						//downloadName = new String(resource.getFilename().getBytes("utf-8"), "ISO-8859-1");
+						downloadName = new String(splitUuid.getBytes("utf-8"), "ISO-8859-1");
 					}
 				
-				headers.add("content-type", "attachment;fileName="+downloadName);
+				//파일을 헤더에 덧붙이기**
+				headers.add("Content-Disposition", "attachment;filename="+downloadName);
 			} catch (UnsupportedEncodingException e) {
 				e.printStackTrace();
 				}
 		return new ResponseEntity<Resource>(resource, headers, HttpStatus.OK);
 	}
+	
+	@PostMapping("/deleteFile")
+	public ResponseEntity<String> deleteFile(String fileName, String type){
+		log.info("파일 제거 요청 "+fileName+", type"+type);
+		//특수문자 인코딩이 일어남 ==> 경로에 있는 \가 %5C로 인코딩 됨
+		//2023%5C05%5C30%5C7c2796cd-41ca-406c-bae7-f67a67236883_tomato.jpg
+		
+		try {
+			File file = new File("c:\\upload\\", URLDecoder.decode(fileName, "utf-8"));
+			
+			//이미지 파일: 원본, 썸네일 삭제
+			//txt 파일: 파일 제거
+			
+			//파일 삭제 : txt 파일, 썸네일 삭제
+			file.delete();
+			
+			//원본 이미지 제거
+			if(type.equals("image")) {
+				//위의 file 객체에서 fileName 추출 후 's_' 를 제거한 상태의 이름을 파일 객체로 생성 후 삭제
+				String orgName = file.getAbsolutePath().replace("s_", "");
+				file = new File(orgName);
+				file.delete();
+			}
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+			return new ResponseEntity<String>(HttpStatus.NOT_FOUND);
+		}
+		
+		return new ResponseEntity<String>("success",HttpStatus.OK);
+	}
+	
 	
 //-----------------------------------------------------------------------------------------------------------------------------
 	
