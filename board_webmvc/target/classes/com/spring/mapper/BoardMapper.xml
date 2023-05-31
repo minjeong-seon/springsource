@@ -1,39 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-
 <mapper namespace="com.spring.mapper.BoardMapper">
-	<!-- 게시글 전체 목록 -->
-<!-- 	<select id="getList" resultType="com.spring.domain.BoardDTO">
-		select bno, title, writer, regdate,updatedate from spring_board order by bno desc, regdate desc
+	
+	<!-- 전체조회 -->
+	<!-- <select id="list" resultType="com.spring.domain.BoardDTO">
+		select bno,title,writer,regdate,updatedate from spring_board order by bno desc, regdate desc
 	</select> -->
 	
-	<!-- 페이지 나누기 적용한 전체 게시글 조회 -->
-	<select id="getList" resultType="com.spring.domain.BoardDTO">
-	<!-- <![CDATA[	]] : []안의 기호는 html 코드의 영향을 받지 않음(꺽쇠(<,>)가 부등호 역할을 수행할 수 있음) -->
-		<![CDATA[		
-			select bno, title, writer, regdate, updatedate, replycnt
-			from (select /*+INDEX_DESC(spring_board pk_spring_board)*/ rownum rn, bno, title, writer, regdate, updatedate, replycnt
-	        		from spring_board
-	       			where 
-	     ]]>  	
-	     <include refid="criteria"></include>
-	     <![CDATA[			
-	       			rownum <= (#{page}*#{amount}))
-			where rn> (#{page}-1)*#{amount}
-		]]>
-		
-		<!-- (페이지 번호: 1, 페이지 당 게시글 수: 10)
-			  (검색기준: T, 검색어: '끝')일 때 쿼리문
-			  
-		select bno, title, writer, regdate, updatedate 
-		from (select 
-							/*+INDEX_DESC(spring_board pk_spring_board)*/ 
-				rownum rn, bno, title, writer, regdate, updatedate 
-				from spring_board 
-				where ( title like '%끝%' ) AND rownum <= (1*10))
-		where rn> (1-1)*10
-		
-		 -->
+	<!-- 페이지 나누기 조회 -->
+	<select id="list" resultType="com.spring.domain.BoardDTO">
+		<![CDATA[
+			select bno,title,writer,regdate,updatedate,replycnt
+			from (select /*+INDEX_DESC(spring_board pk_spring_board)*/ rownum rn, bno, title, writer,regdate,updatedate,replycnt
+			      from spring_board
+			      where 
+		]]>	 
+			<include refid="criteria"></include>		     
+		<![CDATA[	      
+			      
+			      rownum <= (#{page}*#{amount}))
+			where rn > (#{page}-1)*#{amount}		
+		]]>	
 	</select>
 	
 	<!-- 전체 게시물 개수 : totalCnt -->
@@ -41,34 +28,39 @@
 		select count(*) from spring_board
 		where
 			<include refid="criteria"></include>
-		bno>0
+		bno > 0		
 	</select>
 	
-	<!-- 게시글 제목 옆에 댓글 수 업데이트 -->
+	<!-- 댓글 수 추가  -->
 	<update id="updateReplyCnt">
-		update spring_board set replycnt = replycnt + #{amount} where bno = #{bno}
+		update spring_board set replycnt = replycnt + #{amount}
+		where bno=#{bno}
 	</update>
 	
 	
 	
-	<!-- 동적 쿼리(mybatis  문법임)
-		collection = "typeArr" : Criteria 객체의  getTypeArr() 메소드 실행
-		item = "type" : 배열 요소에 접근하기 위한 변수 
-		prefixOverrides="OR" : prefix 이후에 OR로 시작하면 무시함
-		 -->
+	
+	
+	<!-- 동적 쿼리 
+	
+		board/list?page=1&amount=20&type=T&keyword=파이썬     요청
+	
+	    collection="typeArr" => Criteria 객체의 getTypeArr() 메소드 실행됨 => [T]
+	    item="type" => 배열 요소를 접근하기 위한 변수  
+	-->
 	<sql id="criteria">
 		<trim prefix="(" suffix=") AND" prefixOverrides="OR">
 			<foreach collection="typeArr" item="type">
 				<trim prefix="OR">
 					<choose>
 						<when test="type == 'T'.toString()">
-							title like '%'||#{keyword}||'%'
+							title like '%'||#{keyword}||'%' 
 						</when>
 						<when test="type == 'C'.toString()">
-							content like '%'||#{keyword}||'%'
+							content like '%'||#{keyword}||'%' 
 						</when>
 						<when test="type == 'W'.toString()">
-							writer like '%'||#{keyword}||'%'
+							writer like '%'||#{keyword}||'%' 
 						</when>
 					</choose>
 				</trim>
@@ -77,31 +69,81 @@
 	</sql>
 	
 	
-	<!-- 게시글 등록 -->
-	<insert id="register">
-		<!-- selectKey : 주로 pk 값을 미리 SQL을 통해서 처리해 두고 특정한 이름으로 결과를 DTO에 보관 -->
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<!-- 글 등록 -->
+	<insert id="insert">
+		<!-- 주로 pk 값을 미리 SQL 을 통해서 처리해 두고 특정한 이름으로 결과를 보관 -->
 		<selectKey keyProperty="bno" order="BEFORE" resultType="int">
 			select seq_board.nextval from dual
-		</selectKey>
-		insert into spring_board(bno, title, writer, content) 
-		values(#{bno}, #{title}, #{writer}, #{content})
-	</insert>
+		</selectKey>	
 	
-	<!-- 게시글 상세 보기 -->
-	<select id="read" resultType="com.spring.domain.BoardDTO">
-		select bno, title, writer, content, regdate from spring_board where bno=#{bno} 
+		insert into spring_board(bno,title,content,writer) 
+		values(#{bno},#{title},#{content},#{writer})
+	</insert>
+
+	<!-- 특정 번호 조회  -->
+	<select id="get" resultType="com.spring.domain.BoardDTO">
+		select bno,title,writer,content from spring_board where bno=#{bno}
 	</select>
 	
-	<!-- 게시글 수정 -->
-	<update id="modify">
-		update spring_board set title = #{title}, content = #{content}, updatedate = sysdate where bno = #{bno}
+	<!-- 특정 번호 조회 + 파일 정보 
+	     property : dto 변수명과 일치
+	-->
+	<resultMap type="com.spring.domain.BoardDTO" id="boardMap">
+		<id property="bno" column="bno"/>
+		<result property="title" column="title"/>
+		<result property="content" column="content"/>
+		<result property="writer" column="writer"/>
+		<collection property="attachList" resultMap="attachMap"/>
+	</resultMap>	
+	<resultMap type="com.spring.domain.AttachFileDTO" id="attachMap">
+		<result property="uuid" column="uuid"/>
+		<result property="uploadPath" column="uploadPath"/>
+		<result property="fileName" column="fileName"/>
+		<result property="fileType" column="fileType"/>
+		<result property="bno" column="bno"/>
+	</resultMap>	
+	<select id="readAttach" resultMap="boardMap">
+		select title,content,writer,sa.bno, uuid, uploadpath,filetype,filename
+		from spring_board sb join spring_attach sa on sb.bno = sa.bno
+		where sb.bno=#{bno}	
+	</select>
+	
+	
+	
+	
+	<!-- 글 수정 : bno 일치 시 (title, content, updatedate) -->
+	<update id="update">
+		update spring_board set title=#{title}, content=#{content}, updatedate=sysdate
+		where bno=#{bno}
 	</update>
 	
-	<!-- 게시글 삭제 -->
-	<delete id="remove">
+	<!-- 글 삭제 -->
+	<delete id="delete">
 		delete from spring_board where bno=#{bno}
 	</delete>
-	
-	
 </mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

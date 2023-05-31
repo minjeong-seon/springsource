@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
- <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
- <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,11 +23,17 @@
 
     <!-- Custom styles for this template-->
     <link href="/resources/css/sb-admin-2.min.css" rel="stylesheet">
-    
-    <!-- Bootstrap core JavaScript-->
+
+	<!-- Bootstrap core JavaScript-->
     <script src="/resources/vendor/jquery/jquery.min.js"></script>
     <script src="/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
+    
+    <!-- lightbox -->
+    <link href="/resources/css/lightbox/lightbox.min.css" rel="stylesheet">
+    <script src="/resources/js/lightbox/lightbox.min.js"></script>
+    
+    <!--  upload css -->
+    <link href="/resources/css/upload.css" rel="stylesheet">
 </head>
 
 <body id="page-top">
@@ -51,11 +57,10 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href='<c:url value="/"/>'>
+                <a class="nav-link" href='<c:url value="/" />'>
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
-
             <!-- Divider -->
             <hr class="sidebar-divider">
 
@@ -369,4 +374,18 @@
                 </nav>
                 <!-- End of Topbar -->
                 <div class="container-fluid">
-  
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                

@@ -8,12 +8,15 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@AllArgsConstructor @NoArgsConstructor @Getter @Setter @ToString
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter @Setter @ToString
 public class ReplyDTO {
 	private int rno;
 	private int bno;
 	private String reply;
 	private String replyer;
-	private Date replydate;
-	private Date updatedate;
+	private Date replyDate;	
+	private Date updateDate;	
+	
 }
