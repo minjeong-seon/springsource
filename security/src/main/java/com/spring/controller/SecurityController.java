@@ -1,10 +1,13 @@
 package com.spring.controller;
 
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import lombok.extern.slf4j.Slf4j;
 @Slf4j
@@ -17,12 +20,13 @@ public class SecurityController {
 		log.info("로그인 폼 요청..");
 	}
 	
+	@PreAuthorize("hasAnyAuthority('ROLE_USER')")		//security-context.xml 의 intercept-url 과 같은 역할 = ROLE_USER 권한을 가지고 있음
 	@GetMapping("/userpage")
 	public void userPage() {
 		log.info("유저 페이지 요청..");
 	}
 	
-	
+	@PreAuthorize("hasAnyAuthority('ROLE_ADMIN')")	
 	@GetMapping("/adminpage")
 	public void adminPage() {
 		log.info("관리자 페이지 요청..");
@@ -33,5 +37,18 @@ public class SecurityController {
 		model.addAttribute("error", "아이디나 비밀번호를 확인해주세요.");
 		return "/security/login";
 	}
+	
+	@GetMapping("/access-denied")
+	public String accessDenied() {
+		return "/security/denied";
+	}
+	
+	
+	@GetMapping("/auth")
+	@ResponseBody	//viewResolver 사용x (+ dto 객체는 json 형태로 반환)
+	public Authentication auth() {
+		return SecurityContextHolder.getContext().getAuthentication();
+	}
+	
 	
 }
