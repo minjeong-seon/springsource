@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spring.mapper.MemberMapper">
+	
+	<!-- 회원조회 : 로그인 (서로 다른 두 테이블 조인 시) -->
+	<resultMap type="com.spring.domain.MemberDTO" id="springMember">
+		<id property="userid" column="userid"/>
+		<result property="userpw" column="userpw"/>
+		<result property="username" column="username"/>
+		<result property="regdate" column="regdate"/>
+		<result property="updatedate" column="updatedate"/>
+		<result property="enabled" column="enabled"/>
+		<collection property="authorities" resultMap="memberAuth"/>
+	</resultMap>
+	
+	<resultMap type="com.spring.domain.MemberAuthDTO" id="memberAuth">
+		<result property="userid" column="userid"/>
+		<result property="auth" column="auth"/>
+	</resultMap>
+	
+	<select id="read" resultMap="springMember">
+		select s.userid, s.username, s.userpw, regdate, updatedate, u.enabled, a.auth
+		from spring_member s left outer join spring_member_auth a on s.userid = a.userid
+		where s.userid = #{userid}
+		
+	</select>
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

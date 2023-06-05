@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spring.mapper.MemberMapper">
+
+	<!-- 회원가입 -->
+	<insert id="register">
+		insert into sq_user(userid,email,password) 
+		values(#{userid},#{email},#{password})
+	</insert>
+	
+	<insert id="registerAuth">
+		insert into sq_user_authority(userid,authority) 
+		values(#{userid},#{authority})
+	</insert>
+	
+	
+	<!-- 회원조회 : 로그인 (서로 다른 두 테이블 조인 시) -->
+	<resultMap type="com.spring.domain.SqUserDTO" id="sqUser">
+		<id property="userid" column="userid"/>
+		<result property="email" column="email"/>
+		<result property="password" column="password"/>
+		<result property="enabled" column="enabled"/>
+		<collection property="authorites" resultMap="authorites"/>
+	</resultMap>
+	
+	<resultMap type="com.spring.domain.SqUserAuthorityDTO" id="authorites">
+		<result property="userid" column="userid"/>
+		<result property="authority" column="authority"/>
+	</resultMap>
+	
+	<select id="read" resultMap="sqUser">
+		select u.userid, u.email, u.password, u.enabled, a.authority
+		from sq_user u left outer join sq_user_authority a on u.userid = a.userid
+		where u.userid = #{userid}
+		
+	</select>
+	
+
+</mapper>
