@@ -19,7 +19,7 @@
 	</resultMap>
 	
 	<select id="read" resultMap="springMember">
-		select s.userid, s.username, s.userpw, regdate, updatedate, u.enabled, a.auth
+		select s.userid, s.username, s.userpw, regdate, updatedate, enabled, a.auth
 		from spring_member s left outer join spring_member_auth a on s.userid = a.userid
 		where s.userid = #{userid}
 		

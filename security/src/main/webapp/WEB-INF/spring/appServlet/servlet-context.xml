@@ -29,8 +29,9 @@
 	<beans:bean id="multipartResolver" 
 			class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
 	
-	<!-- 컨트롤러에 붙이는 @PreAuthorize 어노테이션 활성화 -->
+	<!--  컨트롤러에 붙이는 @PreAuthorize 활성화 -->
 	<security:global-method-security pre-post-annotations="enabled"/>
+	
 </beans:beans>
 
 

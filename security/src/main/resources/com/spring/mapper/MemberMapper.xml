@@ -4,18 +4,18 @@
 
 	<!-- 회원가입 -->
 	<insert id="register">
-		insert into sq_user(userid,email,password) 
+		insert into sp_user(userid,email,password) 
 		values(#{userid},#{email},#{password})
 	</insert>
 	
 	<insert id="registerAuth">
-		insert into sq_user_authority(userid,authority) 
+		insert into sp_user_authority(userid,authority) 
 		values(#{userid},#{authority})
 	</insert>
 	
 	
-	<!-- 회원조회 : 로그인 (서로 다른 두 테이블 조인 시) -->
-	<resultMap type="com.spring.domain.SqUserDTO" id="sqUser">
+	<!-- 회원조회 : 로그인 -->
+	<resultMap type="com.spring.domain.SpUserDTO" id="spUser">
 		<id property="userid" column="userid"/>
 		<result property="email" column="email"/>
 		<result property="password" column="password"/>
@@ -23,17 +23,22 @@
 		<collection property="authorites" resultMap="authorites"/>
 	</resultMap>
 	
-	<resultMap type="com.spring.domain.SqUserAuthorityDTO" id="authorites">
+	<resultMap type="com.spring.domain.SpUserAuthorityDTO" id="authorites">
 		<result property="userid" column="userid"/>
 		<result property="authority" column="authority"/>
 	</resultMap>
 	
-	<select id="read" resultMap="sqUser">
-		select u.userid, u.email, u.password, u.enabled, a.authority
-		from sq_user u left outer join sq_user_authority a on u.userid = a.userid
-		where u.userid = #{userid}
-		
+	<select id="read" resultMap="spUser">
+		select s1.userid,email,password,enabled,authority
+		from sp_user s1 left outer join sp_user_authority s2 on s1.userid = s2.userid
+		where s1.userid = #{userid}	
 	</select>
 	
 
 </mapper>
+
+
+
+
+
+

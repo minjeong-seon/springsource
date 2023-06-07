@@ -2,17 +2,19 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../include/header.jsp" %>
 	<h1>Login</h1>	
-	<!-- 
+	
+	
+	<!--
 		spring security 로그인 페이지 규칙
-
-			1. post 방식으로 action="/login" 지정
-			2. 아이디를 입력 받는 요소의 이름은 => 반드시 username
-			2. 비밀번호를 입력 받는 요소의 이름은 => 반드시 password
-			4. post 방식으로 가는 모든 폼 안에는 CSRF 토큰 값(token key)이 포함되어 있어야 함.
-			
-	 -->
-	 
-	 <main class="form-signin w-100 m-auto">
+		
+		1) post 방식으로 action="/login" 지정
+		2) 아이디를 입력 받는 요소의 이름은 반드시 username 이어야 함
+		3) 비밀번호를 입력 받는 요소의 이름은 반드시 password 이어야 함
+		4) post 방식으로 가는 모든 폼 안에는 csrf 토큰 값이 포함되어 있어야 함
+	
+	  -->
+	
+	<main class="form-signin w-100 m-auto">
 	  <form method="post" action="/login">	    
 	    <h1 class="h3 mb-3 fw-normal">Please sign in</h1>	
 	    <div class="form-floating">
@@ -25,7 +27,7 @@
 	    </div>	
 	    <div class="checkbox mb-3">
 	      <label>
-	        <input type="checkbox" value="remember-me" name="remember-me"/> Remember me
+	        <input type="checkbox" name="remember-me"> Remember me
 	      </label>
 	    </div>
 	    <div>
@@ -36,5 +38,14 @@
 	    <p class="mt-5 mb-3 text-body-secondary">&copy; 2017–2023</p>
 	  </form>
 	</main>
-	
 <%@ include file="../include/footer.jsp" %>
+
+
+
+
+
+
+
+
+
+
