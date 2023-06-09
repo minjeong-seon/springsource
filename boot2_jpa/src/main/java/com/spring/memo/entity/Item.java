@@ -10,11 +10,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+@Builder
 @Entity
 @AllArgsConstructor @NoArgsConstructor @Getter @Setter @ToString
 public class Item {
@@ -22,7 +24,7 @@ public class Item {
 	@Id
 	@Column(name="item_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;	//상품코드(pk)
+	private Long id;	//상품코드(pk) : insert 시 자동생성
 	
 	@Column(nullable = false, length = 50)
 	private String itemNm;	//상품명
@@ -33,6 +35,7 @@ public class Item {
 	@Column(nullable = false)
 	private int stockNumber;		//재고수량
 	
+	@Column(nullable = false)
 	private String itemDetail;		//상품 상세 설명
 	
 	@Enumerated(EnumType.STRING)
