@@ -1,5 +1,9 @@
 package com.example.restaurant.naver.service;
 
+import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -38,7 +42,7 @@ public class WishListServiceImpl implements WishListService {
 			// 지역 검색 중에서 첫번째 가져오기
 			SearchLocalItem localItem = res.getItems().get(0);
 			
-			// 해당 가게 사진 검색하기 위해 제목 추출
+			// 해당 가게 사진 검색하기 위해 제목 추출(+특문 제거)
 			String imageQuery = localItem.getTitle().replaceAll("<[^>]*>", "");
 			
 			// 이미지 검색 요청
@@ -105,6 +109,19 @@ public class WishListServiceImpl implements WishListService {
 		dto.setVisitCount(entity.getVisitCount());
 		dto.setLastVisitDate(entity.getLastVisitDate());
 		return dto;
+	}
+
+	
+	// 나의 맛집리스트 불러오기
+	// DB에 저장된 리스트 데이터 가져오기
+	@Override
+	public List<WishListDTO> all() {
+		//List<WishListEntity> list = wishListRepository.findAll();
+		return wishListRepository.
+												findAll()
+												.stream()
+												.map(wish -> entityToDto(wish))
+												.collect(Collectors.toList());
 	}
 
 }

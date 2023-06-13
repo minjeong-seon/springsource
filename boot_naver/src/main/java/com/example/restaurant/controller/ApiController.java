@@ -2,6 +2,8 @@ package com.example.restaurant.controller;
 
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -35,7 +37,10 @@ public class ApiController {
 		return wishListService.add(wishListDTO);
 	}
 	
-	
-	
+	@GetMapping("/all")
+	public List<WishListDTO> getList(){
+		log.info("wish list 요청");
+		return wishListService.all();
+	}
 	
 }
