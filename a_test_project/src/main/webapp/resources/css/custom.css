@@ -1,0 +1,105 @@
+@charset "UTF-8";
+/*메인페이지 두번째 헤드*/
+
+.header {
+  margin: 0px;
+  padding: 0px;
+  background: #e5e5e5;
+}
+
+.header nav ul li {
+  float: left;
+  list-style: none;
+}
+.header nav ul a {
+  display: inline-block;
+  padding: 14px 16px;
+  text-decoration: none;
+  color: dimgray;
+}
+
+.header nav ul a:hover {
+  color: blueviolet;
+}
+
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+/*대문 이미지 슬라이드(캐러셀)*/
+
+/*메뉴 선택지 생성*/
+.category-btn-list-cover {
+  position: relative;
+  max-width: fit-content;
+  margin: 0 auto;
+}
+
+.category-btn-item {
+  display: inline-block;
+  padding: 14px 16px;
+  text-decoration: none;
+  vertical-align: baseline;
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+
+.category-btn-item-subject {
+  text-align: center;
+}
+
+/*맛집 액자식 진열*/
+.cartegory_frame_wrap {
+  display: flex;
+  flex-direction: column;
+  -webkit-box-align: center;
+  align-items: center;
+  width: 100%;
+  border-radius: 28px;
+  box-shadow: rgba(192, 192, 192, 0.06) 0px 0px 6px 0px;
+  background-color: rgb(207, 207, 207);
+}
+
+.main_cartegory_name_section {
+  display: flex;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  max-width: fit-content;
+  min-height: 65px;
+  padding: 15px 32px 17px;
+  border-radius: 28px 28px 0px 0px;
+  background-color: rgb(132, 132, 132);
+}
+
+.section_line {
+  border-radius: 1px;
+  background-color: rgb(234, 234, 234);
+}
+
+.main_category_restaurant .first_line {
+  position: relative;
+  display: flex;
+  -webkit-box-pack: start;
+  justify-content: flex-start;
+  width: 1186px;
+  min-height: 306px;
+  padding-top: 30px;
+}
+
+.first_category_line {
+  list-style: none;
+  text-decoration: none;
+  float: left;
+}
+.restaurant_thumbnail {
+  width: 238px;
+  height: 238px;
+  border-radius: 14px;
+}
+.score_image {
+  height: 20px;
+  width: 20px;
+}
