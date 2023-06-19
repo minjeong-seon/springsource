@@ -1,0 +1,203 @@
+@charset "UTF-8";
+@charset "UTF-8";
+/*고정 헤드*/
+
+.desk_header {
+  display: flex;
+  -webkit-box-pack: center;
+  justify-content: center;
+  width: 100%;
+  height: 74px;
+  max-height: 74px;
+  border-bottom: 1px solid rgb(234, 234, 234);
+  background-color: white;
+}
+
+.desc_header_wrap {
+  margin: 0 auto;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 282px 506px auto;
+  -webkit-box-align: center;
+  align-items: center;
+  width: 1070px;
+  height: 100%;
+  padding-left: 0px;
+  padding-right: 0px;
+  box-sizing: border-box;
+}
+
+.main_logo {
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  max-width: 168.2px;
+  height: 100%;
+  padding: 0px 10px;
+}
+
+.search_bar {
+  min-width: 430px;
+}
+
+.search_input_bar {
+  position: relative;
+  box-sizing: border-box;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: auto 18px 22px;
+  gap: 20px;
+  -webkit-box-align: center;
+  align-items: center;
+  width: 100%;
+  max-width: 506px;
+  min-width: 430px;
+  height: 42px;
+  padding-right: 20px;
+  border-radius: 21px;
+  background-color: rgb(245, 245, 245);
+}
+
+.search_input {
+  display: block;
+  max-width: 72.5%;
+  width: 100%;
+  height: 30px;
+  margin-left: 24px;
+  padding: 0px 0px 2px;
+  background-color: transparent;
+  outline: transparent;
+  border: transparent;
+  font-size: 0.9375rem;
+  line-height: 1.3125rem;
+  letter-spacing: -0.0469rem;
+  color: rgb(32, 32, 32);
+}
+
+.search_icon {
+  width: 22px;
+  height: 22px;
+  background-image: url(https://dcicons.s3.ap-northeast-1.amazonaws.com/new/images/web/react_components/SearchQueryInput/search.png);
+  background-size: 100%;
+}
+
+.auth_box {
+  display: inline-flex;
+  -webkit-box-pack: end;
+  justify-content: flex-end;
+  gap: 30px;
+  box-sizing: border-box;
+  width: 100%;
+  height: 20px;
+  padding-left: 24px;
+  white-space: nowrap;
+}
+
+.auth_login {
+  width: 2.415rem;
+}
+
+.auth_register {
+  width: 3.2206rem;
+}
+
+*메인페이지 두번째 헤드*/ .header {
+  margin: 0px;
+  padding: 0px;
+  background: #e5e5e5;
+}
+
+.header nav ul li {
+  float: left;
+  list-style: none;
+}
+.header nav ul a {
+  display: inline-block;
+  padding: 14px 16px;
+  text-decoration: none;
+  color: dimgray;
+}
+
+.header nav ul a:hover {
+  color: blueviolet;
+}
+
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+/*메뉴 선택지 생성*/
+.category-btn-list-cover {
+  position: relative;
+  max-width: fit-content;
+  margin: 0 auto;
+}
+
+.category-btn-item {
+  display: inline-block;
+  padding: 14px 16px;
+  text-decoration: none;
+  vertical-align: baseline;
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+
+.category-btn-item-subject {
+  text-align: center;
+}
+
+/*맛집 액자식 진열*/
+.cartegory_frame_wrap {
+  display: flex;
+  flex-direction: column;
+  -webkit-box-align: center;
+  align-items: center;
+  width: 100%;
+  border-radius: 28px;
+  box-shadow: rgba(192, 192, 192, 0.06) 0px 0px 6px 0px;
+  /*background-color: #e5e5e5;*/
+}
+
+.main_cartegory_name_section {
+  display: flex;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  max-width: fit-content;
+  min-height: 65px;
+  padding: 15px 32px 17px;
+  border-radius: 28px 28px 0px 0px;
+  background-color: #e5e5e5;
+}
+
+.section_line {
+  border-radius: 1px;
+  background-color: rgb(234, 234, 234);
+}
+
+.main_category_restaurant .first_line {
+  position: relative;
+  display: flex;
+  -webkit-box-pack: start;
+  justify-content: flex-start;
+  width: 1186px;
+  min-height: 306px;
+  padding-top: 30px;
+}
+
+.first_category_line {
+  list-style: none;
+  text-decoration: none;
+  display: block;
+}
+.restaurant_thumbnail {
+  width: 238px;
+  height: 238px;
+  border-radius: 14px;
+}
+.score_image {
+  height: 20px;
+  width: 20px;
+}

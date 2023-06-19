@@ -23,7 +23,7 @@ public class HomeController {
 	@GetMapping("/")
 	public String mainGet() {
 		log.info("<<메인 페이지 요청>>");
-		return "main";
+		return "test";
 	}
 	
 	
