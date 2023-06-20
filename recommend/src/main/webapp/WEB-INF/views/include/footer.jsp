@@ -16,13 +16,13 @@
 			<li><a style="font-weight: bold; color: #ed6c00;" href="https://corp.siksinhot.com/w2/recruit" target="_blank">채용공고</a></li>
 		</ul>
 
-		<p>
+		<span>
 			<strong>식신(주)</strong><em></em> 대표자 &nbsp; <strong>안병익</strong><em></em> 서울특별시 강남구 테헤란로8길 16, 9층 (지희빌딩) <br> 사업자등록번호 &nbsp; <strong>214-88-59748</strong><em></em> TEL&nbsp; <strong><a href="tel:1577-3957">1577-3957</a></strong><em></em> FAX&nbsp; <strong>02.533.1909</strong><em></em> EMAIL&nbsp;
 			<a href="mailto:info@siksinhot.com">
 				<strong>info@siksinhot.com</strong>
 			</a>
 			<br> Copyright (c) SIKSIN. All Rights Reserved.
-		</p>
+		</span>
 	</div>
 </footer>
 

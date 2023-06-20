@@ -1,0 +1,40 @@
+
+
+/* Box */
+.box.highlight {
+	text-align: center;
+}
+
+/* Special */
+ul.special {
+	/* list-style: none; */
+	padding-left: 0;
+
+	position: relative;
+	
+}
+
+ul.special li {
+	position: relative;
+	display: inline-block;
+	padding: 2em 3em 3em 2em;
+	text-align: center;
+}
+
+ul.special li a {
+	display: block;
+	outline: 0;
+}
+
+ul.special li a img{
+	height: 5em;
+	width: 5em;
+}
+
+/*얘가 그 선택동그라미*/
+ul.special li a:hover {
+	opacity: 0.35;
+	color: #333333;
+	font-weight: bold;
+}
+

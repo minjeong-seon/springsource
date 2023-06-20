@@ -54,9 +54,10 @@ html {
 	-webkit-tap-highlight-color: transparent
 }
 
-article, aside, figcaption, figure, footer, header, hgroup, main, nav,
+article, aside, figcaption, figure, footer, header, hgroup, main, 
 	section {
-	display: block
+	display: block;
+	padding: 2em 0 0 0;
 }
 
 body {
@@ -89,7 +90,10 @@ h1, h2, h3, h4, h5, h6 {
 
 p {
 	margin-top: 0;
-	margin-bottom: 1rem
+	margin-bottom: 1rem;
+	font-size: xx-large;
+	font-style: italic;
+	font-family: serif;
 }
 
 abbr[data-original-title], abbr[title] {
@@ -341,7 +345,8 @@ template {
 .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
 	margin-bottom: .5rem;
 	font-weight: 400;
-	line-height: 1.2
+	line-height: 1.2;
+
 }
 
 .h1, h1 {
@@ -361,7 +366,10 @@ template {
 }
 
 .h5, h5 {
-	font-size: 1.25rem
+	font-size: 1.25rem;
+	font-style: italic;
+	font-family: serif;
+	font-weight: bolder;
 }
 
 .h6, h6 {
@@ -405,7 +413,6 @@ hr {
 }
 
 .small, small {
-	font-size: 80%;
 	font-weight: 400
 }
 
@@ -9824,8 +9831,8 @@ opacity
 
 .sidebar .nav-item .nav-link .img-profile, .topbar .nav-item .nav-link .img-profile
 	{
-	height: 2rem;
-	width: 2rem
+	height: 3rem;
+	width: 3rem
 }
 
 .topbar #sidebarToggleTop {

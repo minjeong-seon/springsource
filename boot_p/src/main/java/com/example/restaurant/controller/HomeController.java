@@ -26,6 +26,11 @@ public class HomeController {
 		return "test";
 	}
 	
+	@GetMapping("/test")
+	public String tesetGet() {
+		log.info("<<메인 페이지 요청>>");
+		return "main";
+	}
 	
 	@GetMapping("/api/server/naver")
 	public String naver() {
