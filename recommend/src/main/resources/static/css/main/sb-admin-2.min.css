@@ -88,13 +88,7 @@ h1, h2, h3, h4, h5, h6 {
 	margin-bottom: .5rem
 }
 
-p {
-	margin-top: 0;
-	margin-bottom: 1rem;
-	font-size: xx-large;
-	font-style: italic;
-	font-family: serif;
-}
+
 
 abbr[data-original-title], abbr[title] {
 	text-decoration: underline;
@@ -114,7 +108,6 @@ address {
 
 dl, ol, ul {
 	margin-top: 0;
-	margin-bottom: 1rem
 }
 
 ol ol, ol ul, ul ol, ul ul {
@@ -8467,7 +8460,7 @@ supports ((position:-webkit-sticky) or (position:sticky)) { .
 		padding-top: 3rem !important
 	}
 	.pr-md-5, .px-md-5 {
-		padding-right: 3rem !important
+
 	}
 	.pb-md-5, .py-md-5 {
 		padding-bottom: 3rem !important

@@ -15,6 +15,12 @@ public class HomeController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home() {
 		logger.info("Welcome home!");		
-		return "main"; //test
+		return "main"; 
+	}
+	
+	@RequestMapping(value = "/search", method = RequestMethod.GET)
+	public String test() {
+		logger.info("Test home!");		
+		return "/recommend/search"; 
 	}
 }

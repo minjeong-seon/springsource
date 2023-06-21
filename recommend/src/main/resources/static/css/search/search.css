@@ -1,0 +1,13 @@
+p {
+	font-size:large;
+	font-style: normal;
+	letter-spacing: -0.75px;
+	white-space: nowrap;
+	margin-top: 0;
+
+}
+
+.store_name{
+	font-size:xx-large;
+	font-weight: bolder;
+}

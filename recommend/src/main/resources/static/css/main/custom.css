@@ -111,8 +111,12 @@
 .gnb-wrap .inner:after,
 .gnb-wrap:after,
 .gnb-wrap .gnb > ul{display:flex; width:100%; justify-content:space-between;padding-left: 47px;/* padding-right:28px; */}
-.gnb-wrap .gnb > ul > li{word-break: keep-all;}
-.gnb > ul > li > a{display:block; color:#333; font-size:17px;font-weight: 500;text-align:center; padding:18px 22px 18px; height:100%;white-space: nowrap;line-height:20px;}
+.gnb-wrap .gnb > ul > li{word-break: keep-all; font-weight:bold;}
+.gnb-wrap .gnb > ul > li>a:hover{
+	
+	color: rgb(25, 183, 194);
+}
+.gnb > ul > li > a{display:block; color:#333;  font-size:17px;font-weight: bold;text-align:center; padding:18px 22px 18px; height:100%;white-space: nowrap;line-height:20px;}
 .gnb > ul > li.active > a {color:#ff6001}
 .gnb > ul > li .ico-txt-gnb{display:inline-block; width:90px; height:17px; overflow:hidden; background:url("/resources/pc/images/txt/txt_exp_delivery.png") center right no-repeat; background-size:cover; position:relative; top:1px; float:right}
 /* Category All */

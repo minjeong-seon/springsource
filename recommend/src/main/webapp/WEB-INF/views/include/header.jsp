@@ -10,7 +10,7 @@
 <!-- main slide image -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 <!-- main category select box -->
-<link rel="stylesheet" href="css/main.css" />
+<link rel="stylesheet" href="/css/main/main.css" />
 <!-- main category section -->
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css" />
@@ -20,7 +20,7 @@
 <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
 <!-- Custom styles for this template-->
-<link href="/css/sb-admin-2.min.css" rel="stylesheet">
+<link href="/css/main/sb-admin-2.min.css" rel="stylesheet">
 
 <!-- Bootstrap core JavaScript-->
 <script src="/vendor/jquery/jquery.min.js"></script>
@@ -28,8 +28,25 @@
 
 
 <!-- custom design css -->
+<link rel="stylesheet" type="text/css" href="/css/main/custom.css">
+<link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css">
+<!-- search page css -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,700,900&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="css/search/owl.carousel.min.css">
+  <link rel="stylesheet" href="css/search/owl.theme.default.min.css">
+  <link rel="stylesheet" href="css/search/fonts/icomoon/style.css">
+  <link rel="stylesheet" href="css/search/fonts/flaticon/font/flaticon.css">
+  <link rel="stylesheet" href="css/search/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="css/search/aos.css">
+  <link rel="stylesheet" href="css/search/style.css">
+  <link rel="stylesheet" href="css/search/search.css">
 
-<link rel="stylesheet" type="text/css" href="css/custom.css">
+
+
+
+
+
 <style>
 .work-sans {
 	font-family: 'Work Sans', sans-serif;
@@ -135,7 +152,7 @@ a {
 			<div class="desc_header_wrap">
 				<div class="main_logo">
 					<a href="/">
-						<img class="main_logo_img" src="img/korean_food.png" alt="로고" />
+						<img class="main_logo_img" src="/img/korean_food.png" alt="로고" />
 					</a>
 				</div>
 				<div class="search_bar">
@@ -150,7 +167,7 @@ a {
 
 					<!-- Nav Item - User Information -->
 					<li class="nav-item dropdown no-arrow"><a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							<span class="mr-2 d-none d-lg-inline text-gray-600 small">아이디</span> <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
+							<span class="mr-2 d-none d-lg-inline text-gray-600 small">아이디 님</span> <img class="img-profile rounded-circle" src="/img/undraw_profile.svg">
 						</a> <!-- Dropdown - User Information -->
 
 						<div class="dropdown-menu dropdown-menu-right  animated--grow-in" aria-labelledby="userDropdown">
