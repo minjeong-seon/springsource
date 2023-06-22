@@ -95,7 +95,7 @@
 </div>
 
 <!-- 댓글 수정 폼 -->
-<div class="modal" tabindex="-1" id="replyModal">
+<div class="modal" tabindex="-1" id="requestModal">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">

@@ -23,4 +23,6 @@ public class HomeController {
 		logger.info("Test home!");		
 		return "/recommend/search"; 
 	}
+	
+
 }

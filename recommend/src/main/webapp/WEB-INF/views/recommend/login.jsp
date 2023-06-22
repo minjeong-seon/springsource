@@ -97,5 +97,47 @@
     <!-- Custom scripts for all pages-->
     <script src="/js/sb-admin-2.min.js"></script>
 
+
+
+
+
+
+<div class="modal" tabindex="-1" id="replyModal">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">맛집 등록 요청하기</h5>
+				<span>영수증만으로도 식당 등록 요청이 가능합니다.</span>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<input type="hidden" name="rno" id="rno" />
+				<div class="form-group">
+					<textarea name="restaurant_name" id="name" rows="1" class="form-control" placeholder="식당 이름"></textarea>
+				</div>
+				<div class="form-group">
+					<textarea name="restarant_info" id="info" rows="4" class="form-control" placeholder="식당의 주소, 지역명, 전화번호 등 알고있는 정보를 자유롭게 입력해 주세요."></textarea>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-primary">등록 요청</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
 </body>
 </html>

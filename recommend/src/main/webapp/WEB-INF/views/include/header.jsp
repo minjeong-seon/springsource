@@ -7,144 +7,51 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<!-- main slide image -->
+<!-- 메인페이지 & 서치 페이지 디자인 영역  -->
+<!-- 항상 상위 유지할 링크 -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+
 <!-- main category select box -->
-<link rel="stylesheet" href="/css/main/main.css" />
+<link rel="stylesheet" href="/main/css/main/main.css" />
+
 <!-- main category section -->
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css" />
 <link href="https://fonts.googleapis.com/css?family=Work+Sans:200,400&display=swap" rel="stylesheet">
-<!-- TopBar section by Bootstrap sb_admin -->
-<!-- Custom fonts for this template-->
-<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
-<!-- Custom styles for this template-->
-<link href="/css/main/sb-admin-2.min.css" rel="stylesheet">
+<!-- TopBar section by Bootstrap sb_admin -->
+<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+<link href="/main/css/main/sb-admin-2.min.css" rel="stylesheet">
 
 <!-- Bootstrap core JavaScript-->
-<script src="/vendor/jquery/jquery.min.js"></script>
-<script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
+<script src="/main/vendor/jquery/jquery.min.js"></script>
+<script src="/main/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 <!-- custom design css -->
-<link rel="stylesheet" type="text/css" href="/css/main/custom.css">
-<link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="/main/css/main/custom.css">
+<link rel="stylesheet" type="text/css" href="/main/css/main/font-awesome.min.css">
+
 <!-- search page css -->
-  <link href="https://fonts.googleapis.com/css?family=Roboto:400,700,900&display=swap" rel="stylesheet">
-  
-  <link rel="stylesheet" href="css/search/owl.carousel.min.css">
-  <link rel="stylesheet" href="css/search/owl.theme.default.min.css">
-  <link rel="stylesheet" href="css/search/fonts/icomoon/style.css">
-  <link rel="stylesheet" href="css/search/fonts/flaticon/font/flaticon.css">
-  <link rel="stylesheet" href="css/search/jquery.fancybox.min.css">
-  <link rel="stylesheet" href="css/search/aos.css">
-  <link rel="stylesheet" href="css/search/style.css">
-  <link rel="stylesheet" href="css/search/search.css">
+<link href="https://fonts.googleapis.com/css?family=Roboto:400,700,900&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/search/css/owl.carousel.min.css">
+<link rel="stylesheet" href="/search/css/owl.theme.default.min.css">
+<link rel="stylesheet" href="/search/fonts/style.css">
+<link rel="stylesheet" href="/search/fonts/flaticon.css">
+<link rel="stylesheet" href="/search/css/jquery.fancybox.min.css">
+<link rel="stylesheet" href="/search/css/aos.css">
+<link rel="stylesheet" href="/search/css/style.css">
+<link rel="stylesheet" href="/search/css/search.css">
+
+<!-- 메인페이지 대문 슬라이드 및 푸터영역 stylesheet -->
+<link rel="stylesheet" href="/main/css/include.css">
+
+<!-- 메인페이지 & 서치 페이지 디자인 영역 종료 -->
 
 
 
 
 
-
-<style>
-.work-sans {
-	font-family: 'Work Sans', sans-serif;
-}
-
-#menu-toggle:checked+#menu {
-	display: block;
-}
-
-.hover\:grow {
-	transition: all 0.3s;
-	transform: scale(1);
-}
-
-.hover\:grow:hover {
-	transform: scale(1.02);
-}
-
-.carousel-open:checked+.carousel-item {
-	position: static;
-	opacity: 100;
-}
-
-.carousel-item {
-	-webkit-transition: opacity 0.6s ease-out;
-	transition: opacity 0.6s ease-out;
-}
-
-#carousel-1:checked ~ .control-1, #carousel-2:checked ~ .control-2,
-	#carousel-3:checked ~ .control-3 {
-	display: block;
-}
-
-.carousel-indicators {
-	list-style: none;
-	margin: 0;
-	padding: 0;
-	position: absolute;
-	bottom: 2%;
-	left: 0;
-	right: 0;
-	text-align: center;
-	z-index: 10;
-}
-
-#carousel-1:checked ~ .control-1 ~ .carousel-indicators li:nth-child(1) .carousel-bullet,
-	#carousel-2:checked ~ .control-2 ~ .carousel-indicators li:nth-child(2) .carousel-bullet,
-	#carousel-3:checked ~ .control-3 ~ .carousel-indicators li:nth-child(3) .carousel-bullet
-	{
-	color: #000;
-	/*Set to match the Tailwind colour you want the active one to be */
-}
-/* footer */
-a {
-	color: #333;
-}
-
-#level1 a {
-	color: #fff;
-}
-
-#level2 a {
-	margin-top: -70px;
-}
-
-#level3 span {
-	display: block;
-	margin-top: -70px;
-	margin-left: 500px;
-	font-size: 90%;
-}
-
-.fix_area {
-	position: fixed;
-	z-index: 9999;
-	bottom: 50px;
-	right: 50px;
-}
-
-.fix_area .cir_box {
-	display: block;
-	width: 60px;
-	height: 60px;
-	text-align: center;
-	color: #fff;
-	border-radius: 35px;
-	box-sizing: border-box;
-	padding: 6px;
-	font-size: 15px;
-	overflow: hidden;
-	box-: 1px 1px 6px #333;
-}
-
-.fix_area .totop {
-	background-color: rgb(0, 154, 218);
-	margin-top: 10px;
-}
-</style>
 </head>
 <body>
 	<nav class="navbar navbar-expand navbar-light bg-white topbar " id="header_center">
@@ -152,36 +59,43 @@ a {
 			<div class="desc_header_wrap">
 				<div class="main_logo">
 					<a href="/">
-						<img class="main_logo_img" src="/img/korean_food.png" alt="로고" />
+						<img class="main_logo_img" src="/main/img/korean_food.png" alt="로고" />
 					</a>
 				</div>
-				<div class="search_bar">
-					<div class="search_input_bar">
-						<input class="search_input" placeholder="지역, 음식 또는 식당명 입력" value="" />
-						<button class="search_icon" type="button" aria-label="검색하기 버튼"></button>
+				<form action="" class="searchForm">
+					<div class="search_bar">
+						<div class="search_input_bar">
+							<input class="search_input" placeholder="지역, 음식 또는 식당명 입력" value="" />
+							<button class="search_icon" type="submit" aria-label="검색하기 버튼"></button>
+						</div>
 					</div>
-				</div>
+				</form>
+
+
+
+
+
+
+
+
+
 
 				<!-- Topbar Navbar -->
 				<ul class="navbar-nav ml-auto">
 
 					<!-- Nav Item - User Information -->
 					<li class="nav-item dropdown no-arrow"><a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							<span class="mr-2 d-none d-lg-inline text-gray-600 small">아이디 님</span> <img class="img-profile rounded-circle" src="/img/undraw_profile.svg">
+							<span class="mr-2 d-none d-lg-inline text-gray-600 small">아이디 님</span> <img class="img-profile rounded-circle" src="main/img/undraw_profile.svg">
 						</a> <!-- Dropdown - User Information -->
 
-						<div class="dropdown-menu dropdown-menu-right  animated--grow-in" aria-labelledby="userDropdown">
+						<div class="dropdown-menu dropdown-menu-right  animated--grow-in" aria-labelledby="userDropdown" style="text-align: center;">
 							<!-- 사용자 인증 여부에 따라 로그인/로그아웃 페이지 설정 -->
 							<sec:authorize access="isAnonymous()">
-								<a class="dropdown-item" href="..">
-									<i class="fas fa-sign-in-alt fa-sm fa-fw mr-2 text-gray-400"></i> 로그인
-								</a>
+								<a class="dropdown-item" href='<c:url value="/member/login"  />'>로그인 </a>
 							</sec:authorize>
 
-							<a class="dropdown-item" href="#">
-								<i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i> 회원가입
-							</a>
-							<div class="dropdown-divider"></div>
+							<a class="dropdown-item" href='<c:url value="/member/signup"  />'> 회원가입 </a>
+
 
 							<!-- 사용자 로그인 시: 드롭다운 메뉴 변경 -->
 							<sec:authorize access="isAuthenticated()">
